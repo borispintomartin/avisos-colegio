@@ -4,454 +4,560 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avisos del Curso</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&amp;family=DM&#43;Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<title>Curso PK-A — Colegio Cumbres</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #F7F4EF;
-    --ink: #1A1814;
-    --muted: #8A8478;
-    --accent: #C4622D;
-    --accent-light: #F0DDD2;
-    --line: #DDD9D0;
-    --white: #FDFCFA;
-    --tag-bg: #E8E4DC;
-  }
+:root {
+  --bg: #F5F2ED;
+  --surface: #FDFCF9;
+  --ink: #1C1917;
+  --muted: #78716C;
+  --faint: #E7E3DC;
+  --accent: #C0440E;
+  --accent-soft: #FAE8E0;
+  --green: #166534;
+  --green-soft: #DCFCE7;
+  --gold: #92400E;
+  --gold-soft: #FEF3C7;
+  --border: #DDD8D0;
+  --star: #F59E0B;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-  }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
 
-   
-  header {
-    background: var(--ink);
-    padding: 2rem 2.5rem;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1rem;
-  }
+/* ── HEADER ── */
+header {
+  background: var(--ink);
+  padding: 2rem 2.5rem 1.75rem;
+}
 
-  .header-left h1 {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    color: var(--white);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-  }
+h1 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  color: #FDFCF9;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
 
-  .header-left h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+h1 em { font-style: italic; color: #F97316; }
 
-  .header-sub {
-    font-size: 0.78rem;
-    color: #7A7670;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-top: 0.4rem;
-  }
+.header-meta {
+  margin-top: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 
-  .last-update {
-    font-size: 0.72rem;
-    color: #5A5650;
-    text-align: right;
-    white-space: nowrap;
-  }
+.header-badge { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: #78716C; }
 
-   
-  .filter-bar {
-    background: var(--white);
-    border-bottom: 1px solid var(--line);
-    padding: 0.75rem 2.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    overflow-x: auto;
-  }
+.last-updated {
+  font-size: 0.68rem;
+  color: #57534E;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
 
-  .filter-label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    white-space: nowrap;
-    margin-right: 0.5rem;
-  }
+.dot {
+  width: 6px; height: 6px;
+  background: #22C55E;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
 
-  .filter-btn {
-    background: transparent;
-    border: 1px solid var(--line);
-    border-radius: 2px;
-    padding: 0.3rem 0.85rem;
-    font-size: 0.75rem;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--ink);
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.15s;
-  }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
 
-  .filter-btn:hover, .filter-btn.active {
-    background: var(--ink);
-    border-color: var(--ink);
-    color: var(--white);
-  }
+/* ── EVANGELIO ── */
+.evangelio-section {
+  background: linear-gradient(135deg, #1C1917 0%, #292524 100%);
+  border-bottom: 1px solid #3D3735;
+  padding: 1.5rem 2.5rem;
+}
 
-   
-  main {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
-  }
+.evangelio-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--star);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
 
-   
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    margin-top: 2.5rem;
-  }
+.evangelio-fecha {
+  font-size: 0.7rem;
+  color: #78716C;
+  margin-bottom: 0.5rem;
+}
 
-  .section-header:first-child { margin-top: 0; }
+.evangelio-texto {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  color: #E7E3DC;
+  line-height: 1.65;
+  max-width: 700px;
+}
 
-  .section-label {
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    white-space: nowrap;
-  }
+.evangelio-cita {
+  font-size: 0.72rem;
+  color: #57534E;
+  margin-top: 0.6rem;
+  font-style: normal;
+  font-family: 'Geist', sans-serif;
+}
 
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--line);
-  }
+/* ── FILTER BAR ── */
+.filter-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
 
-   
-  .aviso {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 2px;
-    padding: 1.5rem 1.75rem;
-    margin-bottom: 0.75rem;
-    position: relative;
-    transition: border-color 0.15s, box-shadow 0.15s;
-    cursor: default;
-  }
+.filter-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
 
-  .aviso:hover {
-    border-color: var(--accent);
-    box-shadow: 3px 3px 0 var(--accent-light);
-  }
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.28rem 0.9rem;
+  font-size: 0.73rem;
+  font-family: 'Geist', sans-serif;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.filter-btn:hover { color: var(--ink); border-color: var(--ink); }
+.filter-btn.active { background: var(--ink); border-color: var(--ink); color: #FDFCF9; }
 
-  .aviso.urgent {
-    border-left: 3px solid var(--accent);
-  }
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 2.5rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
 
-  .aviso-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.6rem;
-    flex-wrap: wrap;
-  }
+.stat { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--muted); }
+.stat strong { color: var(--ink); font-weight: 500; }
 
-  .aviso-date {
-    font-size: 0.72rem;
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-  }
+/* ── MAIN ── */
+main { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-  .aviso-tag {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    background: var(--tag-bg);
-    color: var(--ink);
-    padding: 0.15rem 0.55rem;
-    border-radius: 1px;
-  }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2rem 0 1rem;
+}
+.section-header:first-child { margin-top: 0; }
 
-  .aviso-tag.urgent-tag {
-    background: var(--accent);
-    color: white;
-  }
+.section-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  white-space: nowrap;
+  font-weight: 500;
+}
 
-  .aviso-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    line-height: 1.3;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
-  }
+.section-line { flex: 1; height: 1px; background: var(--border); }
 
-  .aviso-summary {
-    font-size: 0.88rem;
-    color: #4A4840;
-    line-height: 1.65;
-  }
+/* ── AVISO CARD ── */
+.aviso {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0.6rem;
+  transition: box-shadow 0.15s, border-color 0.15s;
+  animation: fadeUp 0.25s ease both;
+}
 
-  .aviso-event-date {
-    margin-top: 0.85rem;
-    padding-top: 0.85rem;
-    border-top: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.78rem;
-    color: var(--accent);
-    font-weight: 500;
-  }
+@keyframes fadeUp { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
 
-  .aviso-event-date svg {
-    flex-shrink: 0;
-  }
+.aviso:hover { border-color: #C4B8A8; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.aviso.destacado { border-left: 3px solid var(--star); background: #FFFDF5; }
+.aviso.urgent { border-left: 3px solid #DC2626; }
+.aviso.future-event { border-left: 3px solid var(--green); }
+.aviso.has-date { border-left: 3px solid var(--accent); }
+.aviso.cal-only { background: #FAFAF9; border-style: dashed; }
+.aviso.curso-entry { border-left: 3px solid #7C3AED; }
 
-   
-  .empty-state {
-    text-align: center;
-    padding: 4rem 2rem;
-    color: var(--muted);
-  }
+.aviso-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
 
-  .empty-state p {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 1.1rem;
-    opacity: 0.7;
-  }
+.aviso-received { font-size: 0.68rem; color: var(--muted); }
 
-   
-  .loading {
-    text-align: center;
-    padding: 3rem;
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
+.tag {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.12rem 0.5rem;
+  border-radius: 2px;
+  font-weight: 500;
+}
+.tag-category { background: var(--faint); color: var(--muted); }
+.tag-urgent { background: #FEE2E2; color: #991B1B; }
+.tag-future { background: var(--green-soft); color: var(--green); }
+.tag-cal { background: var(--accent-soft); color: var(--accent); }
+.tag-destacado { background: var(--gold-soft); color: var(--gold); }
+.tag-curso { background: #EDE9FE; color: #5B21B6; }
 
-  .spinner {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--line);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    display: inline-block;
-    margin-bottom: 0.75rem;
-  }
+.aviso-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+  letter-spacing: -0.01em;
+}
 
-  @keyframes spin { to { transform: rotate(360deg); } }
+.aviso-summary {
+  font-size: 0.85rem;
+  color: #44403C;
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+}
 
-   
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.72rem;
-    color: var(--muted);
-    border-top: 1px solid var(--line);
-    margin-top: 2rem;
-  }
+.aviso-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--faint);
+}
 
-   
-  @media (max-width: 600px) {
-    header { padding: 1.5rem; }
-    .filter-bar { padding: 0.75rem 1.5rem; }
-    main { padding: 1.5rem 1rem; }
-    .aviso { padding: 1.25rem; }
-  }
+.event-date-display {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 500;
+}
 
-   
-  .aviso {
-    animation: fadeUp 0.3s ease both;
-  }
+.cal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--ink);
+  color: #FDFCF9;
+  border: none;
+  border-radius: 2px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.72rem;
+  font-family: 'Geist', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.cal-btn:hover { background: #292524; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+.empty-state { text-align: center; padding: 4rem 2rem; color: var(--muted); }
+.empty-state p { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.1rem; }
+
+.loading { text-align: center; padding: 3rem; color: var(--muted); font-size: 0.82rem; }
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+@keyframes spin { to{transform:rotate(360deg)} }
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.68rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  header { padding: 1.5rem; }
+  .evangelio-section { padding: 1.25rem 1.5rem; }
+  .filter-bar, .stats-bar { padding: 0.6rem 1rem; }
+  main { padding: 1.25rem 0.75rem 3rem; }
+  .aviso { padding: 1rem 1.1rem; }
+}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-left">
-    <h1>Avisos del <em>Curso</em></h1>
-    <div class="header-sub">Colegio Cumbres · Comunicaciones del curso</div>
+  <h1>Curso <em>PK-A</em></h1>
+  <div class="header-meta">
+    <span class="header-badge">Colegio Cumbres · Preescolar</span>
+    <span class="last-updated">
+      <span class="dot"></span>
+      <span id="last-updated-text">Cargando...</span>
+    </span>
   </div>
-  <div class="last-update" id="last-update"></div>
 </header>
+
+<!-- EVANGELIO -->
+<div class="evangelio-section" id="evangelio-section">
+  <div class="evangelio-label">✦ Evangelio del día</div>
+  <div class="evangelio-fecha" id="evangelio-fecha"></div>
+  <div class="evangelio-texto" id="evangelio-texto">Cargando evangelio...</div>
+  <div class="evangelio-cita" id="evangelio-cita"></div>
+</div>
 
 <div class="filter-bar">
   <span class="filter-label">Ver:</span>
   <button class="filter-btn active" data-filter="all">Todos</button>
-  <button class="filter-btn" data-filter="this-week">Esta semana</button>
+  <button class="filter-btn" data-filter="destacados">Destacados</button>
   <button class="filter-btn" data-filter="upcoming">Próximos eventos</button>
+  <button class="filter-btn" data-filter="this-week">Esta semana</button>
+  <button class="filter-btn" data-filter="curso">Del curso</button>
   <button class="filter-btn" data-filter="urgent">Urgentes</button>
 </div>
 
+<div class="stats-bar">
+  <div class="stat"><strong id="stat-total">—</strong> avisos</div>
+  <div class="stat"><strong id="stat-events">—</strong> con fecha</div>
+  <div class="stat"><strong id="stat-upcoming">—</strong> próximos</div>
+  <div class="stat"><strong id="stat-destacados">—</strong> destacados</div>
+</div>
+
 <main id="main-content">
-  <div class="loading">
-    <div class="spinner"></div>
-    <div>Cargando avisos...</div>
-  </div>
+  <div class="loading"><div class="spinner"></div><div>Cargando avisos...</div></div>
 </main>
 
 <footer>
-  Actualizado automáticamente desde los correos del colegio · Solo lectura
+  Actualizado automáticamente · Curso PK-A Colegio Cumbres · Solo lectura
 </footer>
 
 <script>
+// =============================================
+const DATA_AVISOS = __AVISOS_JSON__;
+const DATA_EVANGELIO = __EVANGELIO_JSON__;
+// =============================================
 
-
-
-const DATA_AVISOS = [{"id":"19e047d9686ce789","received":"2026-05-07T22:09:58.000Z","title":"Fotos escolares Magic Photography - Instrucciones de compra","summary":"Magic Photography enviará mañana 8 de mayo un correo con acceso a las fotografías escolares de sus hijos. Los apoderados interesados en comprar pueden hacerlo hasta el 22 de mayo para recibir el despacho sin costo en el Colegio. Después de esa fecha habrá cargos adicionales por envío.","category":"Administrativo","event_date":"2026-05-08","urgent":false},{"id":"19e043be20283023","received":"2026-05-07T20:58:12.000Z","title":"Interescolar de Atletismo y suspensión de talleres","summary":"El colegio participa con 100 atletas en el Interescolar Preparatorio de Atletismo los días 9, 10 y 11 de mayo. Se solicita a los apoderados respetar las normas del evento (ubicarse en tribuna bajo marquesina, sin barras ni carteles). Los entrenamientos de Atletismo se suspenden el viernes 8 y lunes 11 de mayo.","category":"Deportes","event_date":"2026-05-09","urgent":false},{"id":"19dfefb0d3f1ce94","received":"2026-05-06T20:29:17.000Z","title":"Comunicado General de Mayo 2026 - Información por Ciclo","summary":"El colegio informa sobre múltiples actividades para las próximas semanas divididas por ciclo: interescolares de atletismo, feria del libro, olimpiadas de padres, peregrinación, charla sobre prevención del suicidio, y actividades específicas para cada nivel (Parent's Day, concursos, reforzamiento). Se recomienda revisar los documentos adjuntos y el calendario de hitos.","category":"Eventos","event_date":null,"urgent":false},{"id":"19df8c088e8ca052","received":"2026-05-05T15:27:39.000Z","title":"No se puede procesar - Correo sin contenido","summary":"El correo recibido no contiene información en el cuerpo del mensaje. Solo aparece el asunto 'Entrevista Elena Pinto (PKA KH)' sin detalles adicionales. Se recomienda solicitar al colegio que reenvíe el mensaje completo con la información relevante.","category":"Administrativo","event_date":null,"urgent":false},{"id":"19df8bf2288bc9e8","received":"2026-05-05T15:26:05.000Z","title":"Entrevista confirmada sobre Elena - 11 de mayo","summary":"Se confirma entrevista con Miss Macarena Navarro para discutir temas relacionados con su hija Elena. La reunión está programada para el lunes 11 de mayo a las 9:00 hrs en el colegio. Los apoderados deben asistir según lo acordado.","category":"Academico","event_date":"2026-05-11T09:00:00","urgent":false},{"id":"19df8b515ab762f1","received":"2026-05-05T15:14:56.000Z","title":"Entrevista confirmada con Miss Macarena Navarro","summary":"Se confirma reunión entre los apoderados y Miss Macarena Navarro el lunes 11 de mayo a las 9:00 hrs en el colegio. El objetivo es conversar sobre el proceso formativo y escolar de Elena para fortalecer el acompañamiento académico y personal.","category":"Académico","event_date":"2026-05-11T09:00:00","urgent":false},{"id":"19df8983e0e12a90","received":"2026-05-05T14:43:35.000Z","title":"Entrevista Agendada - Proceso Formativo de Elena","summary":"Se ha agendado una entrevista con Miss Macarena Navarro para el lunes 11 de mayo a las 9:00 hrs. La reunión tiene como objetivo conversar sobre aspectos relacionados con el proceso formativo y escolar de Elena. La asistencia de los apoderados es importante para fortalecer el acompañamiento académico y personal del estudiante.","category":"Académico","event_date":"2026-05-11","urgent":false},{"id":"19df8536d212eba6","received":"2026-05-05T13:28:18.000Z","title":"Reprogramación de entrevista con Miss Macarena Navarro","summary":"Se solicita reprogramar la entrevista inicialmente agendada para el jueves 14 de mayo a las 9:00 hrs. La reunión con Miss Macarena Navarro tiene como objetivo conversar sobre el proceso formativo y escolar de Elena. Se requiere confirmar asistencia en días lunes, miércoles o viernes.","category":"Académico","event_date":null,"urgent":false},{"id":"19df84842988377c","received":"2026-05-05T13:16:15.000Z","title":"Entrevista con Miss Macarena Navarro - Proceso Formativo de Elena","summary":"Se requiere reunión con los apoderados el jueves 14 de mayo a las 9:00 hrs en el colegio para conversar sobre el proceso formativo y escolar de Elena. La presencia de los padres es importante para fortalecer el acompañamiento académico y personal del estudiante.","category":"Académico","event_date":"2025-05-14T09:00:00","urgent":false},{"id":"19df2f67be5ee8c4","received":"2026-05-04T12:28:47.000Z","title":"Entrevista requerida - Situación de convivencia escolar","summary":"El colegio solicita agendar una entrevista con los apoderados de Elena para abordar situaciones de maltrato reportadas por la estudiante. Se requiere atención inmediata a casos de agresión física dentro y fuera de la sala de clases.","category":"Administrativo","event_date":null,"urgent":true},{"id":"19ddfde13bb9798e","received":"2026-04-30T19:29:25.000Z","title":"Comunicado sobre Bullying y Protocolos de Seguridad","summary":"El colegio rechaza categóricamente cualquier forma de violencia o bullying. Se informa que cuenta con protocolos y normativas legales para prevenir y atender casos de maltrato escolar, con canales de denuncia activos y acompañamiento formativo centrado en la persona.","category":"Administrativo","event_date":null,"urgent":true},{"id":"19ddfcd480e6520b","received":"2026-04-30T19:11:03.000Z","title":"Comunicado sobre bullying y protocolos de convivencia escolar","summary":"El colegio rechaza tajantemente cualquier forma de bullying y maltrato. Cuenta con protocolos actualizados, canales de denuncia activos y está realizando la Semana de la Convivencia para promover una cultura de respeto y resolución de conflictos. Se invita a las familias a reforzar estas virtudes en casa.","category":"Administrativo","event_date":null,"urgent":false},{"id":"19dde8e115ce599d","received":"2026-04-30T13:22:25.000Z","title":"Material para nuevo proyecto","summary":"El colegio solicita material para un nuevo proyecto. Se adjunta foto de referencia. Los apoderados deben estar atentos a mayores detalles sobre qué materiales específicos se necesitan.","category":"Académico","event_date":null,"urgent":false},{"id":"19ddafb3501e8d63","received":"2026-04-29T20:43:07.000Z","title":"Comunicado General - Información por Ciclos (29 abril 2026)","summary":"El colegio comunica información importante dividida por ciclos: actividades generales incluyen Adoración Matrimonial, Comida Cumbres Misión y Semana Cultural 2026. I Ciclo destaca incorporación de psicopedagoga y encuesta de mejora escolar. II Ciclo informa calendario de evaluaciones mayo, cambio de puerta de salida para 1° y 2° básico, charla sobre autoridad parental y programación deportiva.","category":"Administrativo","event_date":null,"urgent":false},{"id":"19dd0bfc101bad34","received":"2026-04-27T21:01:57.000Z","title":"Encuesta de Mejora Escolar - Participación de Apoderados","summary":"El colegio solicita a los apoderados responder una encuesta entre el 27 de abril y 1 de mayo para evaluar la experiencia educativa de sus hijos en Pre-Kínder a 2° básico. La encuesta mide tres dimensiones: Enseñanza y Aprendizaje, Clima de Convivencia y Desarrollo Socioemocional, y toma aproximadamente 15 minutos.","category":"Administrativo","event_date":"2026-04-27","urgent":false},{"id":"19dd04ec21a33c62","received":"2026-04-27T18:58:31.000Z","title":"Comunicación sobre material para nuevo proyecto","summary":"El colegio comunica a los apoderados que se requiere material para un nuevo proyecto. Se solicita estar atento a las indicaciones de los docentes José y Jo para conocer los detalles específicos del material necesario.","category":"Académico","event_date":null,"urgent":false},{"id":"19dbaae094978212","received":"2026-04-23T14:10:57.000Z","title":"Cargo PAC/PAT rechazado - Regularizar pago de talleres","summary":"El cargo automático PAC o PAT fue rechazado. Los apoderados deben regularizar el pago de talleres a través de la plataforma UPAGO en el sitio web del colegio. Se recuerda que después del vencimiento del mes se aplican recargos.","category":"Administrativo","event_date":null,"urgent":true},{"id":"19db87590f68105c","received":"2026-04-23T03:50:04.000Z","title":"Cargo PAC/PAT Rechazado - Regularizar Pago a Brevedad","summary":"El cargo PAC o PAT del año 2026 fue rechazado. Los apoderados deben regularizar su situación pagando a través de la plataforma UPAGO en el sitio web del colegio. Se advierte que después del vencimiento del mes se incluyen recargos.","category":"Administrativo","event_date":null,"urgent":true},{"id":"19db690b9887eb6e","received":"2026-04-22T19:00:25.000Z","title":"Regularizar Cargo PAC/PAT Rechazado - Año 2026","summary":"El cargo PAC o PAT del apoderado fue rechazado. Se solicita regularizar el pago a la brevedad a través de la plataforma UPAGO en el sitio web del colegio. Después del vencimiento del mes se aplican recargos adicionales.","category":"Administrativo","event_date":null,"urgent":true},{"id":"19db683d4603edcd","received":"2026-04-22T18:46:22.000Z","title":"Comunicado General - Abril 2026","summary":"El colegio informa sobre actividades y charlas programadas para las próximas semanas según ciclo escolar. Destaca charlas de convivencia digital para II ciclo, taller de adolescencia para 8° básico y test vocacional para II medio. Se adjuntan calendario de hitos, programación deportiva y plan lector.","category":"Administrativo","event_date":null,"urgent":false},{"id":"19db5f364726ef15","received":"2026-04-22T16:08:39.000Z","title":"Cargo PAC/PAT Rechazado - Regularizar Pago Urgente","summary":"El cargo PAC o PAT de los apoderados fue rechazado. Se solicita regularizar el pago a través de la plataforma UPAGO en el sitio web del colegio. Después de vencer el mes se aplicarán recargos adicionales.","category":"Administrativo","event_date":null,"urgent":true},{"id":"19db5d49afbbadef","received":"2026-04-22T15:34:47.000Z","title":"Cargo PAC/PAT 2026 Rechazado - Regularizar Pago","summary":"El cargo PAC o PAT del año 2026 fue rechazado. Los apoderados deben regularizar su situación pagando a través de la Plataforma UPAGO en el sitio web del colegio. Después de vencer el mes se aplicarán recargos adicionales.","category":"Administrativo","event_date":null,"urgent":true},{"id":"19d9d1bcec3eda9f","received":"2026-04-17T20:22:14.000Z","title":"Venta de entradas Día de la Familia Vikinga 2026","summary":"A partir del lunes 20 de abril comienza la venta de entradas para el Día de la Familia Vikinga 2026. Los apoderados pueden comprar online, de forma presencial en Av. La Plaza (lunes a viernes 7:45-8:30 hrs) o en Av. República de Honduras el 26 de abril.","category":"Eventos","event_date":null,"urgent":false},{"id":"19d9cecbc0473610","received":"2026-04-17T19:30:49.000Z","title":"Medidas de seguridad y convivencia escolar ante amenazas","summary":"El colegio implementa nuevas medidas de seguridad en respuesta a incidentes de violencia en establecimientos educacionales. Se realizará capacitación docente, actualización de protocolos de convivencia y sesiones formativas con estudiantes desde 5° básico sobre consecuencias legales de amenazas y mensajes violentos.","category":"Administrativo","event_date":null,"urgent":true},{"id":"19d927e9f2424c8c","received":"2026-04-15T18:54:21.000Z","title":"Comunicado General - Actividades y Hitos por Ciclo","summary":"El colegio informa sobre actividades relevantes para las próximas semanas organizadas por ciclo educativo. Incluye información sobre Día del Libro, retiro de alumnos, hitos académicos, actividades especiales por curso y planes lectores de inglés. Se recomienda revisar los documentos específicos según el ciclo correspondiente.","category":"Académico","event_date":null,"urgent":false},{"id":"19d6eb7b9ef525e4","received":"2026-04-08T20:10:24.000Z","title":"Comunicado General - Abril 2026","summary":"El colegio informa sobre inscripciones a programas ECYD, conferencia para mamás, cuota voluntaria del Centro de Padres, cambios en evaluaciones y programación deportiva. Se organiza la información por ciclos educativos (I, II y III) para facilitar la coordinación entre familias y colegio.","category":"Administrativo","event_date":null,"urgent":false},{"id":"19d6989566b78c1f","received":"2026-04-07T20:01:31.000Z","title":"Torneo de la Amistad - Información para Apoderados","summary":"El colegio informa sobre el Torneo de la Amistad. Se requiere la atención de los apoderados para conocer los detalles y requisitos del evento. Se recomienda revisar la comunicación completa para obtener información específica sobre fechas, participantes y procedimientos.","category":"Eventos","event_date":null,"urgent":false},{"id":"19d687b544b6fe07","received":"2026-04-07T15:06:22.000Z","title":"Designación de Encargada de Familia Primer Ciclo 2026","summary":"Se comunica la designación de la encargada de familia para Primer Ciclo del año 2026. La información detallada se encuentra en la carta adjunta al correo.","category":"Administrativo","event_date":null,"urgent":false},{"id":"19d657e58e39ab92","received":"2026-04-07T01:10:58.000Z","title":"Exposiciones Proyecto Insects and Arachnids - Prekinder A","summary":"Los estudiantes de Prekinder A han sido seleccionados para realizar exposiciones sobre insectos y arácnidos como parte de un proyecto en curso. Cada niño eligió el insecto o arácnido que investigará. Los apoderados deben revisar la comunicación adjunta para obtener detalles completos y confirmar la recepción del correo.","category":"Académico","event_date":null,"urgent":false},{"id":"19d643c70e574e88","received":"2026-04-06T19:19:32.000Z","title":"Suspensión talleres extraprogramáticos martes 7 de abril","summary":"Por el partido de fútbol Universidad Católica vs Boca Juniors y plan especial de seguridad, se suspenden los talleres extraprogramáticos del II y III Ciclo el martes 7 de abril entre las 15:50 y 17:20 hrs. Las clases se realizarán normalmente con salidas a horario regular. Se redireccionará el flujo de salida por Av. Las Flores debido a cierre preventivo de calle República de Honduras.","category":"Administrativo","event_date":"2026-04-07","urgent":true}];
-
-
-function formatDate(dateStr) {
-  if (!dateStr) return '';
-  try {
-    const d = new Date(dateStr);
-    return d.toLocaleDateString('es-CL', { weekday: 'long', day: 'numeric', month: 'long' });
-  } catch(e) { return dateStr; }
+function parseDate(str) {
+  if (!str) return null;
+  try { return new Date(str); } catch(e) { return null; }
 }
 
-function formatReceivedDate(dateStr) {
-  if (!dateStr) return '';
-  try {
-    const d = new Date(dateStr);
-    const now = new Date();
-    const diff = Math.floor((now - d) / (1000 * 60 * 60 * 24));
-    if (diff === 0) return 'Hoy';
-    if (diff === 1) return 'Ayer';
-    if (diff < 7) return `Hace ${diff} días`;
-    return d.toLocaleDateString('es-CL', { day: 'numeric', month: 'short' });
-  } catch(e) { return dateStr; }
+function isFuture(dateStr) {
+  const d = parseDate(dateStr);
+  return d && d >= new Date();
 }
 
 function isThisWeek(dateStr) {
-  if (!dateStr) return false;
-  const d = new Date(dateStr);
+  const d = parseDate(dateStr);
+  if (!d) return false;
   const now = new Date();
-  const diff = (d - now) / (1000 * 60 * 60 * 24);
-  return diff >= 0 && diff <= 7;
+  const diff = (d - now) / (1000*60*60*24);
+  return diff >= -1 && diff <= 7;
 }
 
-function isUpcoming(dateStr) {
-  if (!dateStr) return false;
-  const d = new Date(dateStr);
-  const now = new Date();
-  return d >= now;
+function formatEventDate(dateStr) {
+  const d = parseDate(dateStr);
+  if (!d) return '';
+  return d.toLocaleDateString('es-CL', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
 }
 
-function renderAvisos(avisos) {
-  const main = document.getElementById('main-content');
-
-  if (!avisos || avisos.length === 0) {
-    main.innerHTML = '<div class="empty-state"><p>No hay avisos recientes.</p></div>';
-    return;
-  }
-
-  
-  const thisWeek = [];
-  const earlier = [];
+function formatReceived(dateStr) {
+  const d = parseDate(dateStr);
+  if (!d) return '';
   const now = new Date();
+  const diff = Math.floor((now - d) / (1000*60*60*24));
+  if (diff === 0) return 'Hoy';
+  if (diff === 1) return 'Ayer';
+  if (diff < 7) return 'Hace ' + diff + ' días';
+  return d.toLocaleDateString('es-CL', { day:'numeric', month:'short' });
+}
 
-  avisos.forEach(a => {
-    const d = new Date(a.received);
-    const diff = (now - d) / (1000 * 60 * 60 * 24);
-    if (diff <= 7) thisWeek.push(a);
-    else earlier.push(a);
-  });
+function daysLabel(dateStr) {
+  const d = parseDate(dateStr);
+  if (!d) return '';
+  const days = Math.ceil((d - new Date()) / (1000*60*60*24));
+  if (days < 0) return '';
+  if (days === 0) return '¡Hoy!';
+  if (days === 1) return 'Mañana';
+  return 'En ' + days + ' días';
+}
 
-  let html = '';
-
-  if (thisWeek.length > 0) {
-    html += '<div class="section-header"><span class="section-label">Esta semana</span><div class="section-line"></div></div>';
-    thisWeek.forEach((a, i) => {
-      html += renderAviso(a, i);
-    });
-  }
-
-  if (earlier.length > 0) {
-    html += '<div class="section-header"><span class="section-label">Anteriores</span><div class="section-line"></div></div>';
-    earlier.forEach((a, i) => {
-      html += renderAviso(a, i + thisWeek.length);
-    });
-  }
-
-  main.innerHTML = html;
-
-  
-  if (avisos[0] && avisos[0].received) {
-    const d = new Date(avisos[0].received);
-    document.getElementById('last-update').innerHTML =
-      'Último aviso<br>' + d.toLocaleDateString('es-CL', { day: 'numeric', month: 'short' });
-  }
+function generateICS(a) {
+  const d = parseDate(a.event_date);
+  if (!d) return '';
+  const pad = n => String(n).padStart(2,'0');
+  const fmt = dt => dt.getFullYear() + pad(dt.getMonth()+1) + pad(dt.getDate());
+  const ics = [
+    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Curso PK-A Cumbres//ES',
+    'BEGIN:VEVENT',
+    'UID:' + a.id + '@cumbres-pka',
+    'DTSTART;VALUE=DATE:' + fmt(d),
+    'DTEND;VALUE=DATE:' + fmt(new Date(d.getTime()+86400000)),
+    'SUMMARY:' + (a.title||'Evento Colegio Cumbres'),
+    'DESCRIPTION:' + (a.summary||'').replace(/\n/g,'\\n'),
+    'END:VEVENT','END:VCALENDAR'
+  ].join('\r\n');
+  return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
 }
 
 function renderAviso(a, idx) {
-  const urgentClass = a.urgent ? ' urgent' : '';
-  const urgentTag = a.urgent ? '<span class="aviso-tag urgent-tag">Urgente</span>' : '';
-  const categoryTag = a.category ? `<span class="aviso-tag">${a.category}</span>` : '';
-  const eventDate = a.event_date
-    ? `<div class="aviso-event-date">
+  const future = isFuture(a.event_date);
+  const hasDate = !!a.event_date;
+  const esCurso = a.source === 'sheet';
+
+  let borderClass = '';
+  if (a.destacado) borderClass = 'destacado';
+  else if (a.urgent) borderClass = 'urgent';
+  else if (future && hasDate) borderClass = 'future-event';
+  else if (hasDate) borderClass = 'has-date';
+  if (esCurso) borderClass = 'curso-entry';
+  if (a.source === 'calendar') borderClass += ' cal-only';
+
+  const days = hasDate ? daysLabel(a.event_date) : '';
+
+  const tags = [];
+  if (a.destacado) tags.push('<span class="tag tag-destacado">★ Destacado</span>');
+  if (a.urgent) tags.push('<span class="tag tag-urgent">Urgente</span>');
+  if (days) tags.push('<span class="tag tag-future">' + days + '</span>');
+  if (esCurso) tags.push('<span class="tag tag-curso">Del curso</span>');
+  if (a.category) tags.push('<span class="tag tag-category">' + a.category + '</span>');
+  if (a.source === 'calendar') tags.push('<span class="tag tag-cal">Calendario</span>');
+
+  const footer = hasDate ? `
+    <div class="aviso-footer">
+      <div class="event-date-display">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
           <rect x="1" y="2" width="11" height="10" rx="1" stroke="currentColor" stroke-width="1.2"/>
           <path d="M4 1v2M9 1v2M1 5h11" stroke="currentColor" stroke-width="1.2"/>
         </svg>
-        Fecha del evento: ${formatDate(a.event_date)}
-      </div>`
-    : '';
+        ${formatEventDate(a.event_date)}
+      </div>
+      <a class="cal-btn" href="${generateICS(a)}" download="evento-pka.ics">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+          <path d="M5.5 1v6M2.5 5l3 3 3-3M1 9.5h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Agregar al calendario
+      </a>
+    </div>` : '';
+
+  const receivedLine = a.received ? '<span class="aviso-received">' + formatReceived(a.received) + '</span>' : '';
 
   return `
-    <div class="aviso${urgentClass}" style="animation-delay: ${idx * 0.04}s"
-         data-received="${a.received || ''}"
-         data-event="${a.event_date || ''}"
-         data-urgent="${a.urgent || false}">
-      <div class="aviso-meta">
-        <span class="aviso-date">${formatReceivedDate(a.received)}</span>
-        ${urgentTag}
-        ${categoryTag}
-      </div>
-      <div class="aviso-title">${a.title || 'Sin título'}</div>
-      <div class="aviso-summary">${a.summary || ''}</div>
-      ${eventDate}
-    </div>
-  `;
+    <div class="aviso ${borderClass}" style="animation-delay:${idx*.035}s"
+         data-received="${a.received||''}"
+         data-event="${a.event_date||''}"
+         data-urgent="${a.urgent||false}"
+         data-destacado="${a.destacado||false}"
+         data-future="${future}"
+         data-source="${a.source||'email'}">
+      <div class="aviso-meta">${receivedLine}${tags.join('')}</div>
+      <div class="aviso-title">${a.title||'Sin título'}</div>
+      <div class="aviso-summary">${a.summary||''}</div>
+      ${footer}
+    </div>`;
+}
+
+function renderAll(avisos) {
+  const main = document.getElementById('main-content');
+  if (!avisos || avisos.length === 0) {
+    main.innerHTML = '<div class="empty-state"><p>No hay avisos disponibles.</p></div>';
+    return;
+  }
+
+  const withDate = avisos.filter(a => a.event_date).length;
+  const upcoming = avisos.filter(a => isFuture(a.event_date)).length;
+  const destacados = avisos.filter(a => a.destacado).length;
+  document.getElementById('stat-total').textContent = avisos.length;
+  document.getElementById('stat-events').textContent = withDate;
+  document.getElementById('stat-upcoming').textContent = upcoming;
+  document.getElementById('stat-destacados').textContent = destacados;
+
+  if (avisos[0] && avisos[0].received) {
+    const d = parseDate(avisos[0].received);
+    document.getElementById('last-updated-text').textContent =
+      'Actualizado ' + (d ? d.toLocaleDateString('es-CL',{day:'numeric',month:'short'}) : '');
+  }
+
+  const destacadosArr = avisos.filter(a => a.destacado);
+  const conFechaFutura = avisos.filter(a => !a.destacado && isFuture(a.event_date));
+  const resto = avisos.filter(a => !a.destacado && !isFuture(a.event_date));
+
+  let html = '';
+  let idx = 0;
+
+  if (destacadosArr.length > 0) {
+    html += '<div class="section-header"><span class="section-label">★ Destacados</span><div class="section-line"></div></div>';
+    destacadosArr.forEach(a => { html += renderAviso(a, idx++); });
+  }
+
+  if (conFechaFutura.length > 0) {
+    html += '<div class="section-header"><span class="section-label">Próximos eventos</span><div class="section-line"></div></div>';
+    conFechaFutura.forEach(a => { html += renderAviso(a, idx++); });
+  }
+
+  if (resto.length > 0) {
+    html += '<div class="section-header"><span class="section-label">Comunicados recientes</span><div class="section-line"></div></div>';
+    resto.forEach(a => { html += renderAviso(a, idx++); });
+  }
+
+  main.innerHTML = html;
 }
 
 function applyFilter(filter) {
-  const avisos = document.querySelectorAll('.aviso');
-  avisos.forEach(el => {
+  document.querySelectorAll('.aviso').forEach(el => {
     let show = true;
-    if (filter === 'this-week') {
-      show = isThisWeek(el.dataset.received) || isThisWeek(el.dataset.event);
-    } else if (filter === 'upcoming') {
-      show = isUpcoming(el.dataset.event);
-    } else if (filter === 'urgent') {
-      show = el.dataset.urgent === 'true';
-    }
+    if (filter === 'destacados') show = el.dataset.destacado === 'true';
+    else if (filter === 'upcoming') show = el.dataset.future === 'true';
+    else if (filter === 'this-week') show = isThisWeek(el.dataset.event) || isThisWeek(el.dataset.received);
+    else if (filter === 'urgent') show = el.dataset.urgent === 'true';
+    else if (filter === 'curso') show = el.dataset.source === 'sheet';
     el.style.display = show ? '' : 'none';
   });
 
-  // Hide/show section headers
   document.querySelectorAll('.section-header').forEach(sh => {
-    const next = sh.nextElementSibling;
+    let cursor = sh.nextElementSibling;
     let hasVisible = false;
-    let cursor = next;
     while (cursor && !cursor.classList.contains('section-header')) {
       if (cursor.style.display !== 'none') hasVisible = true;
       cursor = cursor.nextElementSibling;
@@ -459,7 +565,6 @@ function applyFilter(filter) {
     sh.style.display = hasVisible ? '' : 'none';
   });
 }
-
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -469,15 +574,27 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-
+// Evangelio
 try {
-  const avisos = typeof DATA_AVISOS === 'object' ? DATA_AVISOS : [];
-  renderAvisos(avisos);
+  const ev = typeof DATA_EVANGELIO === 'object' && DATA_EVANGELIO ? DATA_EVANGELIO : null;
+  if (ev && ev.texto) {
+    document.getElementById('evangelio-fecha').textContent = ev.fecha || '';
+    document.getElementById('evangelio-texto').textContent = ev.texto;
+    document.getElementById('evangelio-cita').textContent = ev.cita || '';
+  } else {
+    document.getElementById('evangelio-section').style.display = 'none';
+  }
+} catch(e) {
+  document.getElementById('evangelio-section').style.display = 'none';
+}
+
+// Avisos
+try {
+  renderAll(Array.isArray(DATA_AVISOS) ? DATA_AVISOS : []);
 } catch(e) {
   document.getElementById('main-content').innerHTML =
     '<div class="empty-state"><p>Error al cargar los avisos.</p></div>';
 }
 </script>
-
 </body>
 </html>
